@@ -16,8 +16,9 @@ class CreateTogglesTable extends Migration
         Schema::create('toggles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('name');
-            $table->boolean('value');
-            $table->char('description');
+            $table->boolean('value')->default(0);
+            $table->char('description')->nullable();
+            $table->bigInteger('author');
             $table->timestamps();
         });
     }

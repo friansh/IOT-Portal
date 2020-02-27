@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Toggle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ToggleController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class ToggleController extends Controller
      */
     public function index()
     {
-        //
+        return Toggle::where('author', Auth::id())->get();
     }
 
     /**
@@ -35,7 +39,11 @@ class ToggleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $toggle = new Toggle();
+        $toggle->name = $request->name;
+        $toggle->description = $request->description;
+        $toggle->author = Auth::id();
+        $toggle->save();
     }
 
     /**
@@ -46,7 +54,7 @@ class ToggleController extends Controller
      */
     public function show(Toggle $toggle)
     {
-        //
+        return $toggle;
     }
 
     /**
@@ -69,7 +77,9 @@ class ToggleController extends Controller
      */
     public function update(Request $request, Toggle $toggle)
     {
-        //
+        $toggle->name = $request->name;
+        $toggle->description = $request->description;
+        $toggle->save();
     }
 
     /**
@@ -80,6 +90,6 @@ class ToggleController extends Controller
      */
     public function destroy(Toggle $toggle)
     {
-        //
+        $toggle->delete();
     }
 }

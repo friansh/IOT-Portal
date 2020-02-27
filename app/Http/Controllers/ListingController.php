@@ -35,7 +35,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return view('register');
+        //
     }
 
     /**
@@ -61,7 +61,7 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
-
+        return $listing;
     }
 
     /**
@@ -84,7 +84,9 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
-        //
+        $listing->name = $request->name;
+        $listing->description = $request->description;
+        $listing->save();
     }
 
     /**
@@ -95,6 +97,6 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        //
+        $listing->delete();
     }
 }

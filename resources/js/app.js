@@ -4,7 +4,7 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -12,7 +12,13 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./DashboardApp');
-require('./ToggleApp');
-require('./components/Navbar');
-require('./components/Card');
+require("./DashboardApp");
+require("./ToggleApp");
+require("./ListingApp");
+require("./components/Navbar");
+
+require("./components/Card/ListingCard");
+require("./components/Card/ToggleCard");
+require("./components/Card/ChartCard");
+require("./components/Card/DataCard");
+require("./components/Card/SmallCard");

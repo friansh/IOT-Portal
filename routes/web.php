@@ -15,10 +15,12 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {return view('welcome'); });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/belajarchart/{id?}', 'HomeController@belajarChart');
-Route::view('/react', 'react');
-Route::view('/toggle', 'toggle');
-Route::resource('listing', 'ListingController');
+// Route::get('/dashboard', 'DashboardController@index');
+Route::view('/dashboard', 'dashboard');
+Route::view('/toggle/index', 'toggle.index');
+Route::view('/listing/index', 'listing.index');
+Route::view('/listing/view/{id}', 'listing.view');
 
+Route::resource('toggle', 'ToggleController');
+Route::resource('listing', 'ListingController');
 Auth::routes();
